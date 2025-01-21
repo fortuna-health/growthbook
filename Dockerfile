@@ -17,7 +17,7 @@ ARG NODE_MAJOR
 WORKDIR /usr/local/src/app
 
 # Set Node memory and optimization flags early
-ENV NODE_OPTIONS="--max-old-space-size=8192 --optimize-for-size --gc-interval=100"
+ENV NODE_OPTIONS="--max-old-space-size=8192 --gc-interval=100"
 ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN apt-get update && \
@@ -112,8 +112,6 @@ COPY --from=nodebuild /usr/local/src/app/package.json ./package.json
 # Copy buildinfo if it exists
 COPY buildinfo* ./buildinfo
 
-# Maintain NODE_OPTIONS in production
-ENV NODE_OPTIONS="--max-old-space-size=8192"
 
 COPY --from=pybuild /usr/local/src/app/dist /usr/local/src/gbstats
 RUN pip3 install /usr/local/src/gbstats/*.whl
