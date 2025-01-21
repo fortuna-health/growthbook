@@ -3,6 +3,7 @@ ARG NODE_MAJOR=20
 
 # Build the python gbstats package
 FROM python:${PYTHON_MAJOR}-slim AS pybuild
+ADD .aptible.yml /.aptible/.aptible.yml
 WORKDIR /usr/local/src/app
 COPY ./packages/stats .
 RUN \
