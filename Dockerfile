@@ -6,16 +6,19 @@ FROM python:${PYTHON_MAJOR}-slim AS pybuild
 WORKDIR /usr/local/src/app
 COPY ./packages/stats .
 RUN \
-  pip3 install poetry==1.8.5  \
+  pip3 install poetry==1.8.5 \
   && poetry install --no-root --without dev --no-interaction --no-ansi \
   && poetry build \
   && poetry export -f requirements.txt --output requirements.txt
-ENV NODE_OPTIONS="--max-old-space-size=8192"
 
 # Build the nodejs app
 FROM python:${PYTHON_MAJOR}-slim AS nodebuild
 ARG NODE_MAJOR
 WORKDIR /usr/local/src/app
+
+# Set Node memory and optimization flags early
+ENV NODE_OPTIONS="--max-old-space-size=8192"
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN apt-get update && \
   apt-get install -y wget gnupg2 build-essential && \
   echo "deb https://deb.nodesource.com/node_$NODE_MAJOR.x buster main" > /etc/apt/sources.list.d/nodesource.list && \
