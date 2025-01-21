@@ -15,7 +15,7 @@ services:
     depends_on:
       - mongo
     environment:
-      - MONGODB_URI=mongodb://aptible:xn9P4wM9yCH3BDkuM857whULVJP9RW8y@db-fortuna-non-prod-144255.aptible.in:20855/db?ssl=true  # This will use Aptible's injected database URL
+      - MONGODB_URI=mongodb://aptible:xn9P4wM9yCH3BDkuM857whULVJP9RW8y@db-fortuna-non-prod-144255.aptible.in:20855/db?ssl=true
       - APP_ORIGIN=https://growthbook-fortuna-app-stg-green.on-aptible.com
       - API_HOST=https://growthbook-fortuna-app-stg-green.on-aptible.com
     volumes:
