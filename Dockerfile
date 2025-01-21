@@ -14,6 +14,8 @@ RUN \
 
 
 ENV NODE_OPTIONS="--max-old-space-size=8192 --optimize-for-size --gc-interval=100"
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_MEMORY_LIMIT=8192
 
 # Build the nodejs app
 FROM python:${PYTHON_MAJOR}-slim AS nodebuild
