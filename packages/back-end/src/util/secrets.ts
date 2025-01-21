@@ -94,7 +94,7 @@ export const GCS_DOMAIN =
   process.env.GCS_DOMAIN ||
   `https://storage.googleapis.com/${GCS_BUCKET_NAME}/`;
 
-export const JWT_SECRET = process.env.JWT_SECRET || "dev";
+export const JWT_SECRET = process.env.JWT_SECRET || "awefawefaweawegaweagwaeg";
 if ((prod || !isLocalhost) && !IS_CLOUD && JWT_SECRET === "dev") {
   throw new Error(
     "Cannot use JWT_SECRET=dev in production. Please set to a long random string."
