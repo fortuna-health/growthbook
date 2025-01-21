@@ -17,7 +17,7 @@ ARG NODE_MAJOR
 WORKDIR /usr/local/src/app
 
 # Set Node memory and optimization flags early
-ENV NODE_OPTIONS="--max-old-space-size=8192 --gc-interval=100"
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN apt-get update && \
