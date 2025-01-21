@@ -12,6 +12,9 @@ RUN \
   && poetry build \
   && poetry export -f requirements.txt --output requirements.txt
 
+
+ENV NODE_OPTIONS="--max-old-space-size=8192 --optimize-for-size --gc-interval=100"
+
 # Build the nodejs app
 FROM python:${PYTHON_MAJOR}-slim AS nodebuild
 ARG NODE_MAJOR
@@ -78,7 +81,6 @@ COPY --from=nodebuild /usr/local/src/app/package.json ./package.json
 
 # wildcard used to act as 'copy if exists'
 COPY buildinfo* ./buildinfo
-ENV NODE_OPTIONS=--max-old-space-size=8192
 
 COPY --from=pybuild /usr/local/src/app/dist /usr/local/src/gbstats
 RUN pip3 install /usr/local/src/gbstats/*.whl
