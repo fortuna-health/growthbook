@@ -46,8 +46,10 @@ RUN yarn postinstall
 # Build the app and do a clean install with only production dependencies
 COPY packages ./packages
 RUN \
-  yarn build:deps && \
-  yarn build:app && \
+  yarn build:deps 
+RUN \
+  yarn build:app
+RUN \
   rm -rf node_modules \
   && rm -rf packages/back-end/node_modules \
   && rm -rf packages/front-end/node_modules \
