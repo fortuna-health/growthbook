@@ -33,7 +33,7 @@ pydantic = "^2.5.3"
 packaging = ">=20.0.0"
 
 [tool.poetry.group.dev.dependencies]
-certifi = "2022.12.7"
+certifi = "2024.7.4"
 tox = "^3.20.1"
 virtualenv = "^20.2.2"
 twine = "^3.3.0"
